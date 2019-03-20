@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Wpf">
+﻿<Project Sdk="MSBuild.Sdk.Extras/1.6.65">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -9,54 +9,44 @@
     <Copyright>Copyright © Spark Development Network 2011-2014</Copyright>
     <AssemblyVersion>1.1.2.0</AssemblyVersion>
     <FileVersion>1.1.2.0</FileVersion>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
     <ExtrasEnableWpfProjectSetup>true</ExtrasEnableWpfProjectSetup>
     <PreBuildEvent />
-    <PreBuildEvent />
-    <PreBuildEvent />
   </PropertyGroup>
-
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
-
-  <!-- <PropertyGroup>
+  <PropertyGroup>
     <PreBuildEvent />
-  </PropertyGroup> -->
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml"/>
-    <Page Include="Views/MainWindow.xaml"/>
-    <Page Include="Views/BrowserPage.xaml"/>
-    <Page Include="Views/StartupPage.xaml"/>
-  </ItemGroup>
-
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.DesktopUI"/>
-    <!-- <FrameworkReference Include="System.Management" Version="4.*" />
-    <FrameworkReference Include="System.Runtime.Caching" Version="4.*" />
-    <FrameworkReference Include="Microsoft.CSharp" Version="4.*" />
-    <FrameworkReference Include="System.Data.DataSetExtensions" Version="4.*" /> -->
-  </ItemGroup>
-
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="6.0.3" />
   </ItemGroup>
-
-  <!-- <ItemGroup>
+  <ItemGroup>
     <Reference Include="Rock.Wpf, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>libs\Rock.Wpf\Rock.Wpf.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System.configuration" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-  </ItemGroup> -->
-
+  </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources/fontawesome-webfont.ttf" />
-    <Resource Include="resources/OpenSans-Light-webfont.ttf" />
-    <Resource Include="resources/OpenSans-Regular-webfont.ttf" />
+    <Resource Include="resources\fontawesome-webfont.ttf" />
+    <Resource Include="resources\OpenSans-Light-webfont.ttf" />
+    <Resource Include="resources\OpenSans-Regular-webfont.ttf" />
   </ItemGroup>
   <ItemGroup>
     <SplashScreen Include="landscape%402x.png" />
